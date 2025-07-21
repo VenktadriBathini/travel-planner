@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g id="rotating-globe">
+    <circle cx="20" cy="20" r="18" fill="#1976d2" stroke="#fff" stroke-width="2"/>
+    <ellipse cx="20" cy="20" rx="14" ry="18" fill="none" stroke="#90caf9" stroke-width="1.5"/>
+    <ellipse cx="20" cy="20" rx="18" ry="8" fill="none" stroke="#90caf9" stroke-width="1.5"/>
+    <path d="M20 2 A18 18 0 0 1 38 20" stroke="#fff" stroke-width="1.5" fill="none"/>
+    <path d="M20 38 A18 18 0 0 1 2 20" stroke="#fff" stroke-width="1.5" fill="none"/>
+    <path d="M10 20 Q20 10 30 20 Q20 30 10 20 Z" fill="#64b5f6" fill-opacity="0.7"/>
+    <path d="M15 15 Q20 12 25 15 Q22 18 15 15 Z" fill="#fff" fill-opacity="0.5"/>
+  </g>
+</svg> 
