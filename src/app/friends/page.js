@@ -80,7 +80,8 @@ export default function FriendsPage() {
       id: "friend1",
       username: "sarah_adventures",
       fullName: "Sarah Johnson",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
       status: "online",
       recentTrip: "Florida Sunshine Adventure",
       lastActive: "2 hours ago",
@@ -89,7 +90,8 @@ export default function FriendsPage() {
       id: "friend2",
       username: "mike_explorer",
       fullName: "Mike Chen",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       status: "offline",
       recentTrip: "California Coast Adventure",
       lastActive: "1 day ago",
@@ -98,7 +100,8 @@ export default function FriendsPage() {
       id: "friend3",
       username: "emma_wanderlust",
       fullName: "Emma Rodriguez",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      avatar:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
       status: "online",
       recentTrip: "New York City Experience",
       lastActive: "30 minutes ago",
@@ -110,16 +113,20 @@ export default function FriendsPage() {
       id: "req1",
       username: "alex_globetrotter",
       fullName: "Alex Thompson",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      message: "Hey! I saw we both love hiking. Would love to connect and share travel tips!",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      message:
+        "Hey! I saw we both love hiking. Would love to connect and share travel tips!",
       timestamp: "2 hours ago",
     },
     {
       id: "req2",
       username: "lisa_sunshine",
       fullName: "Lisa Park",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
-      message: "Love your travel photos! Let's be friends and share adventures!",
+      avatar:
+        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+      message:
+        "Love your travel photos! Let's be friends and share adventures!",
       timestamp: "1 day ago",
     },
   ]);
@@ -129,7 +136,8 @@ export default function FriendsPage() {
       id: "sug1",
       username: "david_mountains",
       fullName: "David Wilson",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      avatar:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
       mutualFriends: 3,
       interests: ["Hiking", "Photography", "National Parks"],
     },
@@ -137,7 +145,8 @@ export default function FriendsPage() {
       id: "sug2",
       username: "anna_beach",
       fullName: "Anna Martinez",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face",
       mutualFriends: 2,
       interests: ["Beach", "Water Sports", "Tropical Destinations"],
     },
@@ -149,12 +158,29 @@ export default function FriendsPage() {
       userId: "friend1",
       user: friends[0],
       title: "Florida Sunshine Adventure",
-      description: "A week exploring Orlando, Tampa, Miami, and Key West with amazing theme parks and beaches!",
+      description:
+        "A week exploring Orlando, Tampa, Miami, and Key West with amazing theme parks and beaches!",
       places: [
-        { name: "Orlando, FL", coordinates: [28.5383, -81.3792], type: "Theme Parks" },
-        { name: "Tampa, FL", coordinates: [27.9506, -82.4572], type: "City & Culture" },
-        { name: "Miami, FL", coordinates: [25.7617, -80.1918], type: "Beach & Nightlife" },
-        { name: "Key West, FL", coordinates: [24.5551, -81.78], type: "Island Paradise" },
+        {
+          name: "Orlando, FL",
+          coordinates: [28.5383, -81.3792],
+          type: "Theme Parks",
+        },
+        {
+          name: "Tampa, FL",
+          coordinates: [27.9506, -82.4572],
+          type: "City & Culture",
+        },
+        {
+          name: "Miami, FL",
+          coordinates: [25.7617, -80.1918],
+          type: "Beach & Nightlife",
+        },
+        {
+          name: "Key West, FL",
+          coordinates: [24.5551, -81.78],
+          type: "Island Paradise",
+        },
       ],
       duration: "7 days",
       cost: "$2,500",
@@ -174,10 +200,19 @@ export default function FriendsPage() {
       userId: "friend2",
       user: friends[1],
       title: "California Coast Adventure",
-      description: "Road trip along the stunning Pacific Coast Highway from San Francisco to Big Sur",
+      description:
+        "Road trip along the stunning Pacific Coast Highway from San Francisco to Big Sur",
       places: [
-        { name: "San Francisco, CA", coordinates: [37.7749, -122.4194], type: "City & Culture" },
-        { name: "Big Sur, CA", coordinates: [36.2704, -121.8081], type: "Scenic Beauty" },
+        {
+          name: "San Francisco, CA",
+          coordinates: [37.7749, -122.4194],
+          type: "City & Culture",
+        },
+        {
+          name: "Big Sur, CA",
+          coordinates: [36.2704, -121.8081],
+          type: "Scenic Beauty",
+        },
       ],
       duration: "7 days",
       cost: "$3,500",
@@ -225,11 +260,17 @@ export default function FriendsPage() {
   };
 
   const handleLikeTrip = (tripId) => {
-    setSharedTrips(prev => prev.map(trip => 
-      trip.id === tripId 
-        ? { ...trip, isLiked: !trip.isLiked, likes: trip.isLiked ? trip.likes - 1 : trip.likes + 1 }
-        : trip
-    ));
+    setSharedTrips((prev) =>
+      prev.map((trip) =>
+        trip.id === tripId
+          ? {
+              ...trip,
+              isLiked: !trip.isLiked,
+              likes: trip.isLiked ? trip.likes - 1 : trip.likes + 1,
+            }
+          : trip
+      )
+    );
   };
 
   const handleShareTrip = (trip) => {
@@ -276,7 +317,7 @@ export default function FriendsPage() {
         }}
         sx={{ mb: 3 }}
       />
-      
+
       <Grid container spacing={3}>
         {friends.map((friend) => (
           <Grid item xs={12} sm={6} md={4} key={friend.id}>
@@ -292,12 +333,18 @@ export default function FriendsPage() {
                           width: 12,
                           height: 12,
                           borderRadius: "50%",
-                          bgcolor: friend.status === "online" ? "success.main" : "grey.500",
+                          bgcolor:
+                            friend.status === "online"
+                              ? "success.main"
+                              : "grey.500",
                         }}
                       />
                     }
                   >
-                    <Avatar src={friend.avatar} sx={{ width: 60, height: 60, mr: 2 }} />
+                    <Avatar
+                      src={friend.avatar}
+                      sx={{ width: 60, height: 60, mr: 2 }}
+                    />
                   </Badge>
                   <Box>
                     <Typography variant="h6" sx={{ fontWeight: 600 }}>
@@ -308,11 +355,15 @@ export default function FriendsPage() {
                     </Typography>
                   </Box>
                 </Box>
-                
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
                   Recent trip: {friend.recentTrip}
                 </Typography>
-                
+
                 <Box sx={{ display: "flex", gap: 1 }}>
                   <Button
                     variant="outlined"
@@ -326,7 +377,11 @@ export default function FriendsPage() {
                     variant="outlined"
                     size="small"
                     startIcon={<Share />}
-                    onClick={() => handleViewTripDetails(sharedTrips.find(t => t.userId === friend.id))}
+                    onClick={() =>
+                      handleViewTripDetails(
+                        sharedTrips.find((t) => t.userId === friend.id)
+                      )
+                    }
                   >
                     View Trips
                   </Button>
@@ -351,7 +406,7 @@ export default function FriendsPage() {
       <Typography variant="h6" gutterBottom>
         Pending Friend Requests ({friendRequests.length})
       </Typography>
-      
+
       <List>
         {friendRequests.map((request) => (
           <ListItem key={request.id} divider>
@@ -401,26 +456,34 @@ export default function FriendsPage() {
       <Typography variant="h6" gutterBottom>
         People You May Know ({suggestions.length})
       </Typography>
-      
+
       <Grid container spacing={3}>
         {suggestions.map((suggestion) => (
           <Grid item xs={12} sm={6} md={4} key={suggestion.id}>
             <Card>
               <CardContent>
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-                  <Avatar src={suggestion.avatar} sx={{ width: 60, height: 60, mr: 2 }} />
+                  <Avatar
+                    src={suggestion.avatar}
+                    sx={{ width: 60, height: 60, mr: 2 }}
+                  />
                   <Box>
                     <Typography variant="h6" sx={{ fontWeight: 600 }}>
                       {suggestion.fullName}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                      @{suggestion.username} • {suggestion.mutualFriends} mutual friends
+                      @{suggestion.username} • {suggestion.mutualFriends} mutual
+                      friends
                     </Typography>
                   </Box>
                 </Box>
-                
+
                 <Box sx={{ mb: 2 }}>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    gutterBottom
+                  >
                     Interests:
                   </Typography>
                   <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
@@ -434,7 +497,7 @@ export default function FriendsPage() {
                     ))}
                   </Box>
                 </Box>
-                
+
                 <Button
                   variant="contained"
                   fullWidth
@@ -456,7 +519,7 @@ export default function FriendsPage() {
       <Typography variant="h6" gutterBottom>
         Trips Shared by Friends ({sharedTrips.length})
       </Typography>
-      
+
       <Grid container spacing={3}>
         {sharedTrips.map((trip) => (
           <Grid item xs={12} sm={6} md={4} key={trip.id}>
@@ -469,31 +532,54 @@ export default function FriendsPage() {
               />
               <CardContent>
                 <Box sx={{ display: "flex", alignItems: "center", mb: 1 }}>
-                  <Avatar src={trip.user.avatar} sx={{ width: 32, height: 32, mr: 1 }} />
+                  <Avatar
+                    src={trip.user.avatar}
+                    sx={{ width: 32, height: 32, mr: 1 }}
+                  />
                   <Typography variant="body2" color="text.secondary">
                     {trip.user.fullName}
                   </Typography>
                 </Box>
-                
+
                 <Typography variant="h6" gutterBottom>
                   {trip.title}
                 </Typography>
-                
-                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mb: 2 }}
+                >
                   {trip.description}
                 </Typography>
-                
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
-                  <Chip icon={<AccessTime />} label={trip.duration} size="small" />
+
+                <Box
+                  sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}
+                >
+                  <Chip
+                    icon={<AccessTime />}
+                    label={trip.duration}
+                    size="small"
+                  />
                   <Chip icon={<AttachMoney />} label={trip.cost} size="small" />
-                  <Chip icon={<LocationOn />} label={`${trip.places.length} places`} size="small" />
+                  <Chip
+                    icon={<LocationOn />}
+                    label={`${trip.places.length} places`}
+                    size="small"
+                  />
                 </Box>
-                
+
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   <Button
                     variant="outlined"
                     size="small"
-                    startIcon={trip.isLiked ? <Favorite color="error" /> : <FavoriteBorder />}
+                    startIcon={
+                      trip.isLiked ? (
+                        <Favorite color="error" />
+                      ) : (
+                        <FavoriteBorder />
+                      )
+                    }
                     onClick={() => handleLikeTrip(trip.id)}
                   >
                     {trip.likes}
@@ -537,7 +623,12 @@ export default function FriendsPage() {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ mb: 4, textAlign: "center" }}>
-        <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700, color: "#1976d2" }}>
+        <Typography
+          variant="h3"
+          component="h1"
+          gutterBottom
+          sx={{ fontWeight: 700, color: "#1976d2" }}
+        >
           👥 Friends & Connections
         </Typography>
         <Typography variant="h6" color="text.secondary">
@@ -567,10 +658,14 @@ export default function FriendsPage() {
         fullWidth
       >
         <DialogTitle>
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <Typography variant="h5">
-              {selectedTrip?.title}
-            </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography variant="h5">{selectedTrip?.title}</Typography>
             <IconButton onClick={() => setTripDetailsOpen(false)}>
               <Close />
             </IconButton>
@@ -587,20 +682,45 @@ export default function FriendsPage() {
                   <Typography variant="body2" color="text.secondary" paragraph>
                     {selectedTrip.description}
                   </Typography>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 1 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 2,
+                      mb: 1,
+                    }}
+                  >
                     <AccessTime color="action" />
-                    <Typography variant="body2">{selectedTrip.duration}</Typography>
+                    <Typography variant="body2">
+                      {selectedTrip.duration}
+                    </Typography>
                   </Box>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 1 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 2,
+                      mb: 1,
+                    }}
+                  >
                     <AttachMoney color="action" />
                     <Typography variant="body2">{selectedTrip.cost}</Typography>
                   </Box>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 1 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 2,
+                      mb: 1,
+                    }}
+                  >
                     <Luggage color="action" />
-                    <Typography variant="body2">Best: {selectedTrip.bestTime}</Typography>
+                    <Typography variant="body2">
+                      Best: {selectedTrip.bestTime}
+                    </Typography>
                   </Box>
                 </Box>
-                
+
                 <Typography variant="h6" gutterBottom>
                   Places Visited
                 </Typography>
@@ -638,7 +758,7 @@ export default function FriendsPage() {
         <DialogTitle>Share Trip</DialogTitle>
         <DialogContent>
           <Typography variant="body1" gutterBottom>
-            Share "{selectedTrip?.title}" with your friends
+            Share &quot;{selectedTrip?.title}&quot; with your friends
           </Typography>
           <TextField
             fullWidth
@@ -662,9 +782,7 @@ export default function FriendsPage() {
           </Box>
         </DialogContent>
         <Box sx={{ p: 2, display: "flex", gap: 1 }}>
-          <Button onClick={() => setShareDialogOpen(false)}>
-            Cancel
-          </Button>
+          <Button onClick={() => setShareDialogOpen(false)}>Cancel</Button>
           <Button variant="contained" onClick={shareTrip}>
             Share Trip
           </Button>
@@ -691,10 +809,12 @@ export default function FriendsPage() {
           />
         </DialogContent>
         <Box sx={{ p: 2, display: "flex", gap: 1 }}>
-          <Button onClick={() => setMessageDialogOpen(false)}>
-            Cancel
-          </Button>
-          <Button variant="contained" onClick={sendMessage} disabled={!newMessage.trim()}>
+          <Button onClick={() => setMessageDialogOpen(false)}>Cancel</Button>
+          <Button
+            variant="contained"
+            onClick={sendMessage}
+            disabled={!newMessage.trim()}
+          >
             Send Message
           </Button>
         </Box>
