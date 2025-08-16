@@ -22,15 +22,47 @@ import {
   DialogActions,
   TextField,
 } from "@mui/material";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Polyline,
-  Popup,
-} from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import dynamic from "next/dynamic";
+
+// Dynamically import map components to avoid SSR issues
+const MapContainer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  { ssr: false }
+);
+const TileLayer = dynamic(
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false }
+);
+const Marker = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Marker),
+  { ssr: false }
+);
+const Polyline = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Polyline),
+  { ssr: false }
+);
+const Popup = dynamic(
+  () => import("react-leaflet").then((mod) => mod.Popup),
+  { ssr: false }
+);
+
+// Import Leaflet CSS and fix markers only on client side
+let L;
+if (typeof window !== "undefined") {
+  import("leaflet/dist/leaflet.css");
+  L = require("leaflet");
+  
+  // Fix for default markers in react-leaflet
+  delete L.Icon.Default.prototype._getIconUrl;
+  L.Icon.Default.mergeOptions({
+    iconRetinaUrl:
+      "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
+    iconUrl:
+      "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+    shadowUrl:
+      "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+  });
+}
 import { useSearchParams } from "next/navigation";
 import IconButton from "@mui/material/IconButton";
 import ShareIcon from "@mui/icons-material/Share";
@@ -38,16 +70,7 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GroupIcon from "@mui/icons-material/Group";
 import DirectionsIcon from "@mui/icons-material/Directions";
 
-// Fix for default markers in react-leaflet
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-  iconUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
-});
+
 
 // Unified sampleTrips data (same as landing page)
 const sampleTrips = [
@@ -219,6 +242,12 @@ export default function DashboardPage() {
   const [shareDialog, setShareDialog] = useState(false);
   const [adviceDialog, setAdviceDialog] = useState(false);
   const [itineraryDialog, setItineraryDialog] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Ensure component is mounted before rendering map
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <Box
@@ -428,33 +457,50 @@ export default function DashboardPage() {
                   <Typography variant="h6" fontWeight={700} sx={{ mb: 1 }}>
                     Trip Map & Route
                   </Typography>
-                  <MapContainer
-                    center={selectedTrip.places[0].coords}
-                    zoom={6}
-                    style={{ height: 300, width: "100%", borderRadius: 12 }}
-                  >
-                    <TileLayer
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    />
-                    {selectedTrip.places.map((place, idx) => (
-                      <Marker key={place.name} position={place.coords}>
-                        <Popup>
-                          <Typography variant="subtitle2">
-                            {place.name}
-                          </Typography>
-                          <Typography variant="caption">
-                            {place.activities.join(", ")}
-                          </Typography>
-                        </Popup>
-                      </Marker>
-                    ))}
-                    {/* Route polyline */}
-                    <Polyline
-                      positions={selectedTrip.places.map((p) => p.coords)}
-                      color="#1976d2"
-                    />
-                  </MapContainer>
+                  {isMounted ? (
+                    <MapContainer
+                      center={selectedTrip.places[0].coords}
+                      zoom={6}
+                      style={{ height: 300, width: "100%", borderRadius: 12 }}
+                    >
+                      <TileLayer
+                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                      />
+                      {selectedTrip.places.map((place, idx) => (
+                        <Marker key={place.name} position={place.coords}>
+                          <Popup>
+                            <Typography variant="subtitle2">
+                              {place.name}
+                            </Typography>
+                            <Typography variant="caption">
+                              {place.activities.join(", ")}
+                            </Typography>
+                          </Popup>
+                        </Marker>
+                      ))}
+                      {/* Route polyline */}
+                      <Polyline
+                        positions={selectedTrip.places.map((p) => p.coords)}
+                        color="#1976d2"
+                      />
+                    </MapContainer>
+                  ) : (
+                    <Box
+                      sx={{
+                        height: 300,
+                        width: "100%",
+                        borderRadius: 12,
+                        background: "rgba(255,255,255,0.1)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "white",
+                      }}
+                    >
+                      <Typography>Loading map...</Typography>
+                    </Box>
+                  )}
                 </Box>
                 {/* Places List */}
                 <Box sx={{ mb: 3 }}>
