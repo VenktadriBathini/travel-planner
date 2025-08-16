@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import {
   Box,
   Container,
@@ -41,17 +41,16 @@ const Polyline = dynamic(
   () => import("react-leaflet").then((mod) => mod.Polyline),
   { ssr: false }
 );
-const Popup = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Popup),
-  { ssr: false }
-);
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+  ssr: false,
+});
 
 // Import Leaflet CSS and fix markers only on client side
 let L;
 if (typeof window !== "undefined") {
   import("leaflet/dist/leaflet.css");
   L = require("leaflet");
-  
+
   // Fix for default markers in react-leaflet
   delete L.Icon.Default.prototype._getIconUrl;
   L.Icon.Default.mergeOptions({
@@ -69,8 +68,6 @@ import ShareIcon from "@mui/icons-material/Share";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import GroupIcon from "@mui/icons-material/Group";
 import DirectionsIcon from "@mui/icons-material/Directions";
-
-
 
 // Unified sampleTrips data (same as landing page)
 const sampleTrips = [
@@ -230,7 +227,7 @@ const friendsVisited = [
   { name: "Clara", avatar: "C" },
 ];
 
-export default function DashboardPage() {
+function DashboardContent() {
   const searchParams = useSearchParams();
   const isDemo = searchParams.get("demo") === "true";
   const [selectedTrip, setSelectedTrip] = useState(null);
@@ -805,5 +802,33 @@ export default function DashboardPage() {
         </Dialog>
       </Container>
     </Box>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense
+      fallback={
+        <Box
+          sx={{
+            minHeight: "100vh",
+            background:
+              "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Typography variant="h4" color="white">
+            Loading Dashboard...
+          </Typography>
+        </Box>
+      }
+    >
+      <DashboardContent />
+    </Suspense>
   );
 }
