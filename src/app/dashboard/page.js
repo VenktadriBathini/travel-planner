@@ -112,46 +112,49 @@ const sampleTrips = [
   },
   {
     id: 2,
-    title: "Paris City Break",
-    description: "Romantic trip to Paris with unlimited sightseeing.",
+    title: "California Coast Adventure",
+    description:
+      "Explore the beautiful California coastline from north to south.",
     places: [
       {
-        name: "Eiffel Tower",
-        activities: ["Climb the tower", "Picnic nearby"],
-        cost: "$50",
-        coords: [48.8584, 2.2945],
+        name: "San Francisco, CA",
+        activities: ["Golden Gate Bridge", "Alcatraz Island"],
+        cost: "$400/day",
+        coords: [37.7749, -122.4194],
       },
       {
-        name: "Louvre Museum",
-        activities: ["See the Mona Lisa"],
-        cost: "$30",
-        coords: [48.8606, 2.3376],
+        name: "Big Sur, CA",
+        activities: ["Coastal Drive", "McWay Falls"],
+        cost: "$250/day",
+        coords: [36.2704, -121.8081],
       },
     ],
-    comments: [{ user: "Clara", text: "The Louvre is incredible!" }],
+    comments: [
+      { user: "Clara", text: "Big Sur coastline is absolutely stunning!" },
+    ],
     photos: [
       "https://images.unsplash.com/photo-1502602898535-0b7b0b7b0b7b?auto=format&fit=crop&w=400&q=80",
     ],
   },
   {
     id: 3,
-    title: "Tokyo Exploration",
-    description: "Modern meets tradition in Japan's capital.",
+    title: "New York City Experience",
+    description: "The city that never sleeps - explore Manhattan and beyond.",
     places: [
       {
-        name: "Shibuya",
-        activities: ["Crossing", "Shopping"],
-        cost: "$100/day",
-        coords: [35.6595, 139.7005],
+        name: "Manhattan, NY",
+        activities: ["Times Square", "Central Park"],
+        cost: "$500/day",
+        coords: [40.7589, -73.9851],
       },
       {
-        name: "Asakusa",
-        activities: ["Senso-ji Temple"],
-        cost: "$20",
-        coords: [35.7148, 139.7967],
+        name: "Central Park, NY",
+        activities: ["Walking trails", "Bethesda Fountain"],
+        cost: "$100/day",
+        coords: [40.7829, -73.9654],
       },
     ],
-    comments: [{ user: "Daisuke", text: "Senso-ji is so peaceful." }],
+    comments: [{ user: "Daisuke", text: "Central Park is so peaceful." }],
     photos: [
       "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=400&q=80",
     ],
@@ -170,11 +173,11 @@ function getGeneralPackingList() {
 }
 
 function getPlacePackingList(place) {
-  const coldPlaces = ["Paris", "Asakusa", "Key West"];
-  const hotPlaces = ["Miami", "Orlando", "Tampa", "Shibuya"];
-  const rainyPlaces = ["Key West", "Tokyo"];
-  const nightlifePlaces = ["Miami", "Shibuya"];
-  const museumPlaces = ["Paris", "Asakusa"];
+  const coldPlaces = ["San Francisco", "Big Sur", "Key West"];
+  const hotPlaces = ["Miami", "Orlando", "Tampa", "Manhattan"];
+  const rainyPlaces = ["Key West", "San Francisco"];
+  const nightlifePlaces = ["Miami", "Manhattan"];
+  const museumPlaces = ["San Francisco", "Manhattan"];
   const packing = [];
   if (coldPlaces.includes(place.name)) {
     packing.push({ item: "Jacket/Coat", reason: "Cold weather expected" });
@@ -212,12 +215,12 @@ function getPlacePackingList(place) {
 // Mock community suggestions for demo
 const communitySuggestions = {
   Miami: ["Mosquito Repellent", "Reusable Water Bottle"],
-  Paris: ["Power Adapter (EU)", "Comfortable Walking Shoes"],
+  "San Francisco": ["Light Jacket", "Comfortable Walking Shoes"],
   "Key West": ["Snorkel Gear"],
   Orlando: ["Rain Poncho"],
   Tampa: ["Camera"],
-  Shibuya: ["Transit Card"],
-  Asakusa: ["Temple Etiquette Guide"],
+  Manhattan: ["Metro Card", "Comfortable Shoes"],
+  "Big Sur": ["Hiking Boots", "Camera"],
 };
 
 // Mock friends who visited
