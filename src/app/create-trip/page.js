@@ -59,24 +59,68 @@ const usCities = [
   { name: "Tampa, FL", coordinates: [27.9506, -82.4572], state: "Florida" },
   { name: "Miami, FL", coordinates: [25.7617, -80.1918], state: "Florida" },
   { name: "Key West, FL", coordinates: [24.5551, -81.78], state: "Florida" },
-  { name: "San Francisco, CA", coordinates: [37.7749, -122.4194], state: "California" },
-  { name: "Los Angeles, CA", coordinates: [34.0522, -118.2437], state: "California" },
-  { name: "San Diego, CA", coordinates: [32.7157, -117.1611], state: "California" },
-  { name: "Big Sur, CA", coordinates: [36.2704, -121.8081], state: "California" },
-  { name: "New York, NY", coordinates: [40.7128, -74.0060], state: "New York" },
-  { name: "Manhattan, NY", coordinates: [40.7589, -73.9851], state: "New York" },
-  { name: "Central Park, NY", coordinates: [40.7829, -73.9654], state: "New York" },
+  {
+    name: "San Francisco, CA",
+    coordinates: [37.7749, -122.4194],
+    state: "California",
+  },
+  {
+    name: "Los Angeles, CA",
+    coordinates: [34.0522, -118.2437],
+    state: "California",
+  },
+  {
+    name: "San Diego, CA",
+    coordinates: [32.7157, -117.1611],
+    state: "California",
+  },
+  {
+    name: "Big Sur, CA",
+    coordinates: [36.2704, -121.8081],
+    state: "California",
+  },
+  { name: "New York, NY", coordinates: [40.7128, -74.006], state: "New York" },
+  {
+    name: "Manhattan, NY",
+    coordinates: [40.7589, -73.9851],
+    state: "New York",
+  },
+  {
+    name: "Central Park, NY",
+    coordinates: [40.7829, -73.9654],
+    state: "New York",
+  },
   { name: "Aspen, CO", coordinates: [39.1911, -106.8175], state: "Colorado" },
   { name: "Denver, CO", coordinates: [39.7392, -104.9903], state: "Colorado" },
-  { name: "Rocky Mountain National Park, CO", coordinates: [40.3428, -105.6836], state: "Colorado" },
+  {
+    name: "Rocky Mountain National Park, CO",
+    coordinates: [40.3428, -105.6836],
+    state: "Colorado",
+  },
   { name: "Austin, TX", coordinates: [30.2672, -97.7431], state: "Texas" },
   { name: "Houston, TX", coordinates: [29.7604, -95.3698], state: "Texas" },
-  { name: "Fredericksburg, TX", coordinates: [30.2752, -98.8720], state: "Texas" },
-  { name: "Nashville, TN", coordinates: [36.1627, -86.7816], state: "Tennessee" },
-  { name: "Memphis, TN", coordinates: [35.1495, -90.0490], state: "Tennessee" },
-  { name: "New Orleans, LA", coordinates: [29.9511, -90.0715], state: "Louisiana" },
+  {
+    name: "Fredericksburg, TX",
+    coordinates: [30.2752, -98.872],
+    state: "Texas",
+  },
+  {
+    name: "Nashville, TN",
+    coordinates: [36.1627, -86.7816],
+    state: "Tennessee",
+  },
+  { name: "Memphis, TN", coordinates: [35.1495, -90.049], state: "Tennessee" },
+  {
+    name: "New Orleans, LA",
+    coordinates: [29.9511, -90.0715],
+    state: "Louisiana",
+  },
   { name: "Las Vegas, NV", coordinates: [36.1699, -115.1398], state: "Nevada" },
-  { name: "Seattle, WA", coordinates: [47.6062, -122.3321], state: "Washington" },
+  {
+    name: "Seattle, WA",
+    coordinates: [47.6062, -122.3321],
+    state: "Washington",
+  },
   { name: "Portland, OR", coordinates: [45.5152, -122.6784], state: "Oregon" },
 ];
 
@@ -124,10 +168,11 @@ export default function CreateTripPage() {
       setFilteredCities([]);
       return;
     }
-    
-    const filtered = usCities.filter(city => 
-      city.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      city.state.toLowerCase().includes(searchQuery.toLowerCase())
+
+    const filtered = usCities.filter(
+      (city) =>
+        city.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        city.state.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredCities(filtered.slice(0, 10)); // Limit to 10 results
   }, [searchQuery]);
@@ -137,11 +182,17 @@ export default function CreateTripPage() {
       ...currentPlace,
       name: city.name,
       coordinates: city.coordinates,
-      type: city.state.includes("FL") ? "Florida City" : 
-            city.state.includes("CA") ? "California City" :
-            city.state.includes("NY") ? "New York City" :
-            city.state.includes("CO") ? "Colorado City" :
-            city.state.includes("TX") ? "Texas City" : "City"
+      type: city.state.includes("FL")
+        ? "Florida City"
+        : city.state.includes("CA")
+        ? "California City"
+        : city.state.includes("NY")
+        ? "New York City"
+        : city.state.includes("CO")
+        ? "Colorado City"
+        : city.state.includes("TX")
+        ? "Texas City"
+        : "City",
     });
     setSearchQuery(city.name);
     setFilteredCities([]);
@@ -191,7 +242,7 @@ export default function CreateTripPage() {
     const optimizedPlaces = [...places];
     const visited = new Set();
     const route = [];
-    
+
     // Start with first place
     let current = optimizedPlaces[0];
     route.push(current);
@@ -205,7 +256,10 @@ export default function CreateTripPage() {
       for (const place of optimizedPlaces) {
         if (visited.has(place.id)) continue;
 
-        const distance = calculateDistance(current.coordinates, place.coordinates);
+        const distance = calculateDistance(
+          current.coordinates,
+          place.coordinates
+        );
         if (distance < minDistance) {
           minDistance = distance;
           nearest = place;
@@ -224,7 +278,10 @@ export default function CreateTripPage() {
     let totalTime = 0;
 
     for (let i = 0; i < route.length - 1; i++) {
-      const distance = calculateDistance(route[i].coordinates, route[i + 1].coordinates);
+      const distance = calculateDistance(
+        route[i].coordinates,
+        route[i + 1].coordinates
+      );
       totalDistance += distance;
       totalTime += distance * 0.5; // Rough estimate: 0.5 hours per 100km
     }
@@ -239,12 +296,15 @@ export default function CreateTripPage() {
 
   const calculateDistance = (coord1, coord2) => {
     const R = 6371; // Earth's radius in km
-    const dLat = (coord2[0] - coord1[0]) * Math.PI / 180;
-    const dLon = (coord2[1] - coord1[1]) * Math.PI / 180;
-    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(coord1[0] * Math.PI / 180) * Math.cos(coord2[0] * Math.PI / 180) *
-              Math.sin(dLon/2) * Math.sin(dLon/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const dLat = ((coord2[0] - coord1[0]) * Math.PI) / 180;
+    const dLon = ((coord2[1] - coord1[1]) * Math.PI) / 180;
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((coord1[0] * Math.PI) / 180) *
+        Math.cos((coord2[0] * Math.PI) / 180) *
+        Math.sin(dLon / 2) *
+        Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
   };
 
@@ -263,7 +323,12 @@ export default function CreateTripPage() {
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ mb: 4, textAlign: "center" }}>
-        <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 700, color: "#1976d2" }}>
+        <Typography
+          variant="h3"
+          component="h1"
+          gutterBottom
+          sx={{ fontWeight: 700, color: "#1976d2" }}
+        >
           ✈️ Plan Your Trip
         </Typography>
         <Typography variant="h6" color="text.secondary">
@@ -364,18 +429,20 @@ export default function CreateTripPage() {
             <Typography variant="h6" gutterBottom>
               📍 Add Places
             </Typography>
-            
+
             {/* City Search */}
             <Autocomplete
               freeSolo
               options={filteredCities}
-              getOptionLabel={(option) => typeof option === 'string' ? option : option.name}
+              getOptionLabel={(option) =>
+                typeof option === "string" ? option : option.name
+              }
               inputValue={searchQuery}
               onInputChange={(event, newInputValue) => {
                 setSearchQuery(newInputValue);
               }}
               onChange={(event, newValue) => {
-                if (newValue && typeof newValue === 'object') {
+                if (newValue && typeof newValue === "object") {
                   handleCitySelect(newValue);
                 }
               }}
@@ -390,7 +457,7 @@ export default function CreateTripPage() {
               )}
               renderOption={(props, option) => (
                 <Box component="li" {...props}>
-                  <LocationOn sx={{ mr: 1, color: 'primary.main' }} />
+                  <LocationOn sx={{ mr: 1, color: "primary.main" }} />
                   <Box>
                     <Typography variant="body1">{option.name}</Typography>
                     <Typography variant="caption" color="text.secondary">
@@ -429,7 +496,10 @@ export default function CreateTripPage() {
                       label="Cost"
                       value={currentPlace.cost}
                       onChange={(e) =>
-                        setCurrentPlace({ ...currentPlace, cost: e.target.value })
+                        setCurrentPlace({
+                          ...currentPlace,
+                          cost: e.target.value,
+                        })
                       }
                       placeholder="e.g., $200"
                       size="small"
@@ -441,7 +511,10 @@ export default function CreateTripPage() {
                   label="Duration"
                   value={currentPlace.duration}
                   onChange={(e) =>
-                    setCurrentPlace({ ...currentPlace, duration: e.target.value })
+                    setCurrentPlace({
+                      ...currentPlace,
+                      duration: e.target.value,
+                    })
                   }
                   margin="normal"
                   placeholder="e.g., 2 days"
@@ -470,7 +543,9 @@ export default function CreateTripPage() {
                     <ListItem key={place.id} divider>
                       <ListItemText
                         primary={place.name}
-                        secondary={`${place.type} • ${place.duration || 'Duration not set'}`}
+                        secondary={`${place.type} • ${
+                          place.duration || "Duration not set"
+                        }`}
                       />
                       <ListItemSecondaryAction>
                         <IconButton
@@ -503,10 +578,15 @@ export default function CreateTripPage() {
         {/* Right Side - Map and Route */}
         <Grid item xs={12} md={6}>
           <Paper sx={{ p: 3, height: "100%" }}>
-            <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 2 }}>
-              <Typography variant="h6">
-                🗺️ Trip Map & Route
-              </Typography>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                mb: 2,
+              }}
+            >
+              <Typography variant="h6">🗺️ Trip Map & Route</Typography>
               <Button
                 variant="outlined"
                 startIcon={<Map />}
@@ -515,14 +595,28 @@ export default function CreateTripPage() {
                 {showMap ? "Hide Map" : "Show Map"}
               </Button>
             </Box>
-            
+
             {showMap ? (
-              <Box sx={{ height: 400, borderRadius: 2, overflow: "hidden", mb: 2 }}>
+              <Box
+                sx={{ height: 400, borderRadius: 2, overflow: "hidden", mb: 2 }}
+              >
                 <MapComponent places={tripData.places} />
               </Box>
             ) : (
-              <Box sx={{ height: 400, bgcolor: "#f5f5f5", borderRadius: 2, p: 2, mb: 2 }}>
-                <Typography variant="body2" color="text.secondary" align="center">
+              <Box
+                sx={{
+                  height: 400,
+                  bgcolor: "#f5f5f5",
+                  borderRadius: 2,
+                  p: 2,
+                  mb: 2,
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  align="center"
+                >
                   Map hidden
                 </Typography>
               </Box>
@@ -569,7 +663,7 @@ export default function CreateTripPage() {
                     </Box>
                   </Grid>
                 </Grid>
-                
+
                 <Typography variant="subtitle2" gutterBottom>
                   Optimized Route Order:
                 </Typography>
@@ -589,14 +683,18 @@ export default function CreateTripPage() {
 
             {/* Quick Tips */}
             <Box sx={{ mt: 2, p: 2, bgcolor: "#fff3e0", borderRadius: 2 }}>
-              <Typography variant="subtitle2" gutterBottom sx={{ color: "#f57c00" }}>
+              <Typography
+                variant="subtitle2"
+                gutterBottom
+                sx={{ color: "#f57c00" }}
+              >
                 💡 Quick Tips
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                • Search for cities by name or state (e.g., "Florida", "California")
-                • The map will automatically show all added places
-                • Route optimization calculates the best travel order
-                • Add at least 2 places to see route optimization
+                • Search for cities by name or state (e.g., Florida, California)
+                • The map will automatically show all added places • Route
+                optimization calculates the best travel order • Add at least 2
+                places to see route optimization
               </Typography>
             </Box>
           </Paper>
